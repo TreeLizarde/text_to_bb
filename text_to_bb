@@ -50,7 +50,7 @@ text_to_bb = {
     'w': '𝕨',
     'x': '𝕩',
     'y': '𝕪',
-    'z': '𝕫'
+    'z': '𝕫',
 }
 
 def convert_to_bb(text):
@@ -59,25 +59,23 @@ def convert_to_bb(text):
         if char in text_to_bb:
             output += text_to_bb[char]
         else:
-            raise ValueError(f"Character '{char}' is not supported.")
+            output += char
     return output
 
 def main():
+    print("~ " * 10) # Separator for better readability
+    print("Enter text to convert to blackboard bold (or enter \"@@exit\" to quit).")
+    print("(Supported characters: A-Z, a-z.)")
+    
     while True:
         print("~ " * 10) # Separator for better readability
-        print("Enter text to convert to blackboard bold (or enter \"exit\" to quit):")
-        print("(Supported characters: A-Z, a-z.)")
+        inp = input("Input: \n")
         
-        inp = input()
-        
-        if inp.lower() == "exit":
+        if inp.lower() == "@@exit":
             break
 
-        try:
-            output = convert_to_bb(inp)
-            print(f"\nOutput: \n{output}")
-        except ValueError as e:
-            print(e)
+        output = convert_to_bb(inp)
+        print(f"\nOutput: \n{output}")
 
 if __name__ == "__main__":
     main()
